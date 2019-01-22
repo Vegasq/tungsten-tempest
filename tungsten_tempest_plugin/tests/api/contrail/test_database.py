@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -53,7 +53,7 @@ class ContrailDatabaseTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_database_nodes"])
-    @decorators.idempotent_id('5ae6f965-6161-443f-b19e-dfa7b364c533')
+    @idempotent_id('5ae6f965-6161-443f-b19e-dfa7b364c533')
     def test_list_database_nodes(self):
         """test method for list database objects"""
         self._create_database_node()
@@ -62,7 +62,7 @@ class ContrailDatabaseTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_database_node"])
-    @decorators.idempotent_id('4a07d9a8-7b99-43bd-b628-06c023993aab')
+    @idempotent_id('4a07d9a8-7b99-43bd-b628-06c023993aab')
     def test_show_database_node(self):
         """test method for show database objects"""
         db_node = self._create_database_node()
@@ -71,7 +71,7 @@ class ContrailDatabaseTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_database_nodes"])
-    @decorators.idempotent_id('b9aa9c6b-9381-44f0-94fb-e4523bf2a87e')
+    @idempotent_id('b9aa9c6b-9381-44f0-94fb-e4523bf2a87e')
     def test_create_database_nodes(self):
         """test method for update database objects"""
         with self.rbac_utils.override_role(self):
@@ -79,7 +79,7 @@ class ContrailDatabaseTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_database_node"])
-    @decorators.idempotent_id('6e59f393-0e55-4327-871e-7f0ad53f2e17')
+    @idempotent_id('6e59f393-0e55-4327-871e-7f0ad53f2e17')
     def test_update_database_node(self):
         """test method for update database objects"""
         db_node = self._create_database_node()
@@ -92,7 +92,7 @@ class ContrailDatabaseTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_database_node"])
-    @decorators.idempotent_id('0cbc5a52-d7e7-4a1c-a85d-6bf44012d99b')
+    @idempotent_id('0cbc5a52-d7e7-4a1c-a85d-6bf44012d99b')
     def test_delete_database_node(self):
         """test method for delete database objects"""
         db_node = self._create_database_node()

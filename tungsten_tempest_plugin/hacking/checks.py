@@ -34,9 +34,10 @@ CLASS = re.compile(r"^class .+")
 RBAC_CLASS_NAME_RE = re.compile(r'class .+RbacTest')
 RULE_VALIDATION_DECORATOR = re.compile(
     r'\s*@rbac_rule_validation.action\(.*')
-IDEMPOTENT_ID_DECORATOR = re.compile(r'\s*@idempotent_id\((.*)\)')
+IDEMPOTENT_ID_DECORATOR = re.compile(r'\s*@idempotent_id\([\'\"](.*)[\'\"]\)')
 
 have_rbac_decorator = False
+known_idempotent_ids = []
 
 
 def import_no_clients_in_api_tests(physical_line, filename):
@@ -154,21 +155,46 @@ def no_rbac_rule_validation_decorator(physical_line, filename):
 
     P100
     """
+    global parse_decorators
     global have_rbac_decorator
+    global have_idempotent_id
 
     if ("tungsten_tempest_plugin/tests/api" in filename or
             "tungsten_tempest_plugin/tests/scenario" in filename):
-
+        # Every test expected to start with @action decorator
         if RULE_VALIDATION_DECORATOR.match(physical_line):
             have_rbac_decorator = True
+            parse_decorators = True
+            have_idempotent_id = False
             return
 
+        # Validate idempotent ids
+        idempotent_id_match = IDEMPOTENT_ID_DECORATOR.match(physical_line)
+        # If line is @idempotent_id decorator
+        if idempotent_id_match and parse_decorators:
+            # Report that test have that decorator
+            have_idempotent_id = True
+            # Grab id and verify its uniqueness
+            idempotent_id = idempotent_id_match.groups()[0].lower()
+            if idempotent_id not in known_idempotent_ids:
+                known_idempotent_ids.append(idempotent_id)
+                idempotent_id = None
+            else:
+                return (0, "Not unique idempotent found: %s." % idempotent_id)
+
+        # Stop parsing decorators onc hit def
         if TEST_DEFINITION.match(physical_line):
             if not have_rbac_decorator:
                 return (0, "Must use rbac_rule_validation.action "
                            "decorator for API and scenario tests")
+            if not have_idempotent_id:
+                return (0, "%s from %s have no @idempotent_id decorator" %
+                        (physical_line, filename))
 
+            # Reset global values
             have_rbac_decorator = False
+            have_idempotent_id = False
+            parse_decorators = False
 
 
 def no_rbac_suffix_in_test_filename(filename):

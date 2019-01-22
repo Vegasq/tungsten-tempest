@@ -20,7 +20,7 @@ Tempest test-case to test BGP as a Service objects using RBAC roles
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -43,7 +43,7 @@ class BGPAsAServicesTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_bgp_as_a_services"])
-    @decorators.idempotent_id('d3153cd0-379e-4e62-9780-ef237e567fc5')
+    @idempotent_id('d3153cd0-379e-4e62-9780-ef237e567fc5')
     def test_list_bgp_as_a_services(self):
         """test method for list bgp as a service objects"""
         with self.rbac_utils.override_role(self):
@@ -51,7 +51,7 @@ class BGPAsAServicesTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_bgp_as_a_services"])
-    @decorators.idempotent_id('a039f0c4-b53a-492b-a5c5-fbdf046afcf4')
+    @idempotent_id('a039f0c4-b53a-492b-a5c5-fbdf046afcf4')
     def test_create_bgp_as_a_services(self):
         """test method for create bgp as a service objects"""
         with self.rbac_utils.override_role(self):
@@ -59,7 +59,7 @@ class BGPAsAServicesTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_bgp_as_a_service"])
-    @decorators.idempotent_id('c2fae8b4-929c-4d2f-914d-76a7414a56dc')
+    @idempotent_id('c2fae8b4-929c-4d2f-914d-76a7414a56dc')
     def test_show_bgp_as_a_service(self):
         """test method for show bgp as a service objects"""
         new_bgp = self._create_bgp_as_a_services()
@@ -69,7 +69,7 @@ class BGPAsAServicesTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_bgp_as_a_service"])
-    @decorators.idempotent_id('78c8389a-7bb5-4027-bae1-923af3d6e77c')
+    @idempotent_id('78c8389a-7bb5-4027-bae1-923af3d6e77c')
     def test_delete_bgp_as_a_service(self):
         """test method for delete bgp as a service objects"""
         new_bgp = self._create_bgp_as_a_services()
@@ -79,7 +79,7 @@ class BGPAsAServicesTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_bgp_as_a_service"])
-    @decorators.idempotent_id('38ba2ecb-71e2-4a2f-be43-e82491dffa05')
+    @idempotent_id('38ba2ecb-71e2-4a2f-be43-e82491dffa05')
     def test_update_bgp_as_a_service(self):
         """test method for update bgp as a service objects"""
         new_bgp = self._create_bgp_as_a_services()

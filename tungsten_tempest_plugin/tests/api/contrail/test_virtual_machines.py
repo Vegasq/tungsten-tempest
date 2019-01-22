@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -100,7 +100,7 @@ class VMContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_virtual_machine_interfaces"])
-    @decorators.idempotent_id('e27d1fae-7324-4ef3-87b1-e7f519b1e2a7')
+    @idempotent_id('e27d1fae-7324-4ef3-87b1-e7f519b1e2a7')
     def test_list_vm_interfaces(self):
         """test method for list vm interfaces objects"""
         self._create_virual_machine_interface()
@@ -109,7 +109,7 @@ class VMContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_virtual_machine_interfaces"])
-    @decorators.idempotent_id('d8a3a524-d61b-4bcb-8146-c5d4f308df8e')
+    @idempotent_id('d8a3a524-d61b-4bcb-8146-c5d4f308df8e')
     def test_add_vm_interfaces(self):
         """test method for add vm interfaces objects"""
         with self.rbac_utils.override_role(self):
@@ -117,7 +117,7 @@ class VMContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_virtual_machine_interface"])
-    @decorators.idempotent_id('3f17125a-9060-4c4a-a23f-0fe2aba2ccef')
+    @idempotent_id('3f17125a-9060-4c4a-a23f-0fe2aba2ccef')
     def test_show_vm_interface(self):
         """test method for show vm interfaces objects"""
         test = self._create_virual_machine_interface()
@@ -126,7 +126,7 @@ class VMContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_virtual_machine_interface"])
-    @decorators.idempotent_id('ce7f9471-ba1b-40d2-94f1-bdd0c610e22f')
+    @idempotent_id('ce7f9471-ba1b-40d2-94f1-bdd0c610e22f')
     def test_delete_vm_interface(self):
         """test method for delete vm interfaces objects"""
         body = self._create_virual_machine_interface()
@@ -135,7 +135,7 @@ class VMContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_virtual_machine_interface"])
-    @decorators.idempotent_id('7ca3046a-6245-4c15-914b-5a8ecdbeee11')
+    @idempotent_id('7ca3046a-6245-4c15-914b-5a8ecdbeee11')
     def test_update_vm_interface(self):
         """test method for update vm interfaces objects"""
         virtual_machine = self._create_virual_machine_interface()

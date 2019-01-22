@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -54,7 +54,7 @@ class ProjectContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_projects"])
-    @decorators.idempotent_id('7db819fd-ceee-4a6b-9ad7-2e837c055bdd')
+    @idempotent_id('7db819fd-ceee-4a6b-9ad7-2e837c055bdd')
     def test_list_projects(self):
         """test method for list project objects"""
         with self.rbac_utils.override_role(self):
@@ -62,7 +62,7 @@ class ProjectContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_projects"])
-    @decorators.idempotent_id('38b9b7a8-1568-417d-b0a3-e7adee88e4b9')
+    @idempotent_id('38b9b7a8-1568-417d-b0a3-e7adee88e4b9')
     def test_create_projects(self):
         """test method for create project objects"""
         with self.rbac_utils.override_role(self):
@@ -70,7 +70,7 @@ class ProjectContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_project"])
-    @decorators.idempotent_id('c47e57c4-34b0-46c2-a678-83b1fe9afd25')
+    @idempotent_id('c47e57c4-34b0-46c2-a678-83b1fe9afd25')
     def test_show_project(self):
         """test method for show project objects"""
         project_uuid = self._create_project()
@@ -79,7 +79,7 @@ class ProjectContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_project"])
-    @decorators.idempotent_id('3d4bd416-16cc-437c-9e95-f9ceda424f8b')
+    @idempotent_id('3d4bd416-16cc-437c-9e95-f9ceda424f8b')
     def test_update_project(self):
         """test method for update project objects"""
         project_uuid = self._create_project()
@@ -88,7 +88,7 @@ class ProjectContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_project"])
-    @decorators.idempotent_id('787ebe8b-b88d-4488-b157-f70554bdd783')
+    @idempotent_id('787ebe8b-b88d-4488-b157-f70554bdd783')
     def test_delete_project(self):
         """test method for delete project objects"""
         project_uuid = self._create_project()

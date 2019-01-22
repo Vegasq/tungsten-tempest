@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -107,7 +107,7 @@ class FloatingIpPoolTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_floating_ip_pools"])
-    @decorators.idempotent_id('a83ca5e8-be4b-4161-869c-f981a724cf82')
+    @idempotent_id('a83ca5e8-be4b-4161-869c-f981a724cf82')
     def test_create_floating_ip_pools(self):
         """test method for create floating IP pool objects"""
         with self.rbac_utils.override_role(self):
@@ -115,7 +115,7 @@ class FloatingIpPoolTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_floating_ip_pools"])
-    @decorators.idempotent_id('9d20e78d-0463-4a0e-b30c-40770bee35bc')
+    @idempotent_id('9d20e78d-0463-4a0e-b30c-40770bee35bc')
     def test_list_floating_ip_pools(self):
         """test method for list floating IP pool objects"""
         self._create_floating_ip_pool()
@@ -124,7 +124,7 @@ class FloatingIpPoolTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_floating_ip_pool"])
-    @decorators.idempotent_id('1ec3124c-c15c-4ee6-b2de-2feed9599e38')
+    @idempotent_id('1ec3124c-c15c-4ee6-b2de-2feed9599e38')
     def test_show_floating_ip_pool(self):
         """test method for show floating IP pool objects"""
         uuid = self._create_floating_ip_pool()['uuid']
@@ -133,7 +133,7 @@ class FloatingIpPoolTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_floating_ip_pool"])
-    @decorators.idempotent_id('6563f2e7-ae6b-483b-8c07-0111efc86817')
+    @idempotent_id('6563f2e7-ae6b-483b-8c07-0111efc86817')
     def test_update_floating_ip_pool(self):
         """test method for update floating IP pool objects"""
         uuid = self._create_floating_ip_pool()['uuid']
@@ -144,7 +144,7 @@ class FloatingIpPoolTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_floating_ip_pool"])
-    @decorators.idempotent_id('c4b449ae-2f12-49cf-9dec-2b21c143aff6')
+    @idempotent_id('c4b449ae-2f12-49cf-9dec-2b21c143aff6')
     def test_delete_floating_ip_pool(self):
         """test method for delete floating IP pool objects"""
         uuid = self._create_floating_ip_pool()['uuid']
@@ -190,7 +190,7 @@ class FloatingIpTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_floating_ips"])
-    @decorators.idempotent_id('ff05f70f-9db9-43cb-a5ce-38cbbef2c430')
+    @idempotent_id('ff05f70f-9db9-43cb-a5ce-38cbbef2c430')
     def test_create_floating_ips(self):
         """test method for create floating IP objects"""
         with self.rbac_utils.override_role(self):
@@ -198,7 +198,7 @@ class FloatingIpTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_floating_ips"])
-    @decorators.idempotent_id('e56046f9-32f9-41ce-9c1b-b982997ac347')
+    @idempotent_id('e56046f9-32f9-41ce-9c1b-b982997ac347')
     def test_list_floating_ips(self):
         """test method for list floating IP objects"""
         self._create_floating_ip()
@@ -207,7 +207,7 @@ class FloatingIpTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_floating_ip"])
-    @decorators.idempotent_id('293f2c26-4101-4a2f-86d4-feb2878bd511')
+    @idempotent_id('293f2c26-4101-4a2f-86d4-feb2878bd511')
     def test_show_floating_ip(self):
         """test method for show floating IP objects"""
         uuid = self._create_floating_ip()['uuid']
@@ -216,7 +216,7 @@ class FloatingIpTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_floating_ip"])
-    @decorators.idempotent_id('a09283c9-73d3-42f7-876d-f33040686d6d')
+    @idempotent_id('a09283c9-73d3-42f7-876d-f33040686d6d')
     def test_update_floating_ip(self):
         """test method for update floating IP objects"""
         uuid = self._create_floating_ip()['uuid']
@@ -227,7 +227,7 @@ class FloatingIpTest(BaseFloatingIpTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_floating_ip"])
-    @decorators.idempotent_id('a26f162f-da56-4153-aed6-bffccba92bc7')
+    @idempotent_id('a26f162f-da56-4153-aed6-bffccba92bc7')
     def test_delete_floating_ip(self):
         """test method for delete floating IP objects"""
         uuid = self._create_floating_ip()['uuid']

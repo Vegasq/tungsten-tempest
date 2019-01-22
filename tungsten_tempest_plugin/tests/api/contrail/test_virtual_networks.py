@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -67,7 +67,7 @@ class NetworksTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_virtual_networks"])
-    @decorators.idempotent_id('375ebc8d-dc52-4d9c-877b-85aba35b1539')
+    @idempotent_id('375ebc8d-dc52-4d9c-877b-85aba35b1539')
     def test_list_virtual_networks(self):
         """test method for list vm network objects"""
         with self.rbac_utils.override_role(self):
@@ -75,7 +75,7 @@ class NetworksTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_virtual_networks"])
-    @decorators.idempotent_id('375ebc8d-dc52-4d9c-877b-96aba35b2530')
+    @idempotent_id('375ebc8d-dc52-4d9c-877b-96aba35b2530')
     def test_create_virtual_networks(self):
         """test method for create vm network objects"""
         with self.rbac_utils.override_role(self):
@@ -83,7 +83,7 @@ class NetworksTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_virtual_network"])
-    @decorators.idempotent_id('375ebc8d-dc52-4d9c-566b-150a025c1237')
+    @idempotent_id('375ebc8d-dc52-4d9c-566b-150a025c1237')
     def test_update_virtual_network(self):
         """test method for update vm network objects"""
         # Create virtual network
@@ -94,7 +94,7 @@ class NetworksTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_virtual_network"])
-    @decorators.idempotent_id('375ebc8d-dc52-4d9c-877b-17bcb53c3641')
+    @idempotent_id('375ebc8d-dc52-4d9c-877b-17bcb53c3641')
     def test_delete_virtual_network(self):
         """test method for delete vm network objects"""
         uuid = self._create_virtual_network()['uuid']
@@ -103,7 +103,7 @@ class NetworksTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_virtual_network"])
-    @decorators.idempotent_id('375ebc8d-dc52-4d9c-877b-27c1a1242a81')
+    @idempotent_id('375ebc8d-dc52-4d9c-877b-27c1a1242a81')
     def test_show_virtual_network(self):
         """test method for show vm network objects"""
         uuid = self._create_virtual_network()['uuid']

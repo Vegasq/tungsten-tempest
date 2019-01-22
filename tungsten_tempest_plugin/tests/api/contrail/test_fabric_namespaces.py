@@ -16,7 +16,7 @@
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -67,7 +67,7 @@ class FabricNamespacesContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_fabric_namespaces"])
-    @decorators.idempotent_id('f9935e2a-c4b6-4694-8698-6148faf93e1a')
+    @idempotent_id('f9935e2a-c4b6-4694-8698-6148faf93e1a')
     def test_list_fabric_namespaces(self):
         """List fabric namespaces
 
@@ -78,7 +78,7 @@ class FabricNamespacesContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_fabric_namespace"])
-    @decorators.idempotent_id('5bb85072-130d-4f36-a787-12b65bdd4c03')
+    @idempotent_id('5bb85072-130d-4f36-a787-12b65bdd4c03')
     def test_create_fabric_namespace(self):
         """Create fabric namespace
 
@@ -89,7 +89,7 @@ class FabricNamespacesContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_fabric_namespace"])
-    @decorators.idempotent_id('5ab5bc8f-7209-427a-9868-4fbc7a7e0d85')
+    @idempotent_id('5ab5bc8f-7209-427a-9868-4fbc7a7e0d85')
     def test_show_fabric_namespace(self):
         """Show fabric namespace
 
@@ -101,7 +101,7 @@ class FabricNamespacesContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_fabric_namespace"])
-    @decorators.idempotent_id('ff20e4bb-6110-476e-80b4-d6114981e8bf')
+    @idempotent_id('ff20e4bb-6110-476e-80b4-d6114981e8bf')
     def test_delete_fabric_namespace(self):
         """Delete fabric namespace
 
@@ -113,7 +113,7 @@ class FabricNamespacesContrailTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_fabric_namespace"])
-    @decorators.idempotent_id('78514d86-fcdc-4bc6-99b9-11b5e91b5296')
+    @idempotent_id('78514d86-fcdc-4bc6-99b9-11b5e91b5296')
     def test_update_fabric_namespace(self):
         """Update fabric namespace
 

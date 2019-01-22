@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -55,7 +55,7 @@ class NetworkPolicyTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_network_policys"])
-    @decorators.idempotent_id('fa2a28f3-a8bb-4908-95b9-1e11cf58b16f')
+    @idempotent_id('fa2a28f3-a8bb-4908-95b9-1e11cf58b16f')
     def test_list_policys(self):
         """test method for list n/w policy objects"""
         with self.rbac_utils.override_role(self):
@@ -63,7 +63,7 @@ class NetworkPolicyTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_network_policys"])
-    @decorators.idempotent_id('a30be228-afba-40c9-8678-ae020db68d79')
+    @idempotent_id('a30be228-afba-40c9-8678-ae020db68d79')
     def test_create_network_policys(self):
         """test method for create n/w policy objects"""
         with self.rbac_utils.override_role(self):
@@ -71,7 +71,7 @@ class NetworkPolicyTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_network_policy"])
-    @decorators.idempotent_id('6cefe92e-8936-49a6-bce0-12da3396e7ab')
+    @idempotent_id('6cefe92e-8936-49a6-bce0-12da3396e7ab')
     def test_show_network_policy(self):
         """test method for show n/w policy objects"""
         policy_uuid = self._create_policy()
@@ -80,7 +80,7 @@ class NetworkPolicyTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_network_policy"])
-    @decorators.idempotent_id('1d470505-3ad4-4870-87d7-3f0b0f9fc635')
+    @idempotent_id('1d470505-3ad4-4870-87d7-3f0b0f9fc635')
     def test_update_network_policy(self):
         """test method for update n/w policy objects"""
         policy_uuid = self._create_policy()
@@ -89,7 +89,7 @@ class NetworkPolicyTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_network_policy"])
-    @decorators.idempotent_id('aae9018f-e7a2-4a75-a68e-afd6c380640e')
+    @idempotent_id('aae9018f-e7a2-4a75-a68e-afd6c380640e')
     def test_delete_network_policy(self):
         """test method for delete n/w policy objects"""
         policy_uuid = self._create_policy()

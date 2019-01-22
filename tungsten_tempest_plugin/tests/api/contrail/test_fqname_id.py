@@ -21,7 +21,7 @@ from oslo_log import log as logging
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -51,7 +51,7 @@ class FqnameIdTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["fqname_to_id"])
-    @decorators.idempotent_id('1fc1350b-3146-49bc-9af5-a61a98b55541')
+    @idempotent_id('1fc1350b-3146-49bc-9af5-a61a98b55541')
     def test_fqname_to_id(self):
         """test method for fqname to id rules objects"""
         with self.rbac_utils.override_role(self):
@@ -60,7 +60,7 @@ class FqnameIdTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["id_to_fqname"])
-    @decorators.idempotent_id('ecdd77d7-8508-4639-86cd-b97907b363ff')
+    @idempotent_id('ecdd77d7-8508-4639-86cd-b97907b363ff')
     def test_id_to_fqname(self):
         """test method for id to fqname rules objects"""
         with self.rbac_utils.override_role(self):

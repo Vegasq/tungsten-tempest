@@ -20,7 +20,7 @@ Tempest test-case to test network ipam objects using RBAC roles
 from patrole_tempest_plugin import rbac_rule_validation
 from tempest import config
 from tempest.lib.common.utils import data_utils
-from tempest.lib import decorators
+from tempest.lib.decorators import idempotent_id
 
 from tungsten_tempest_plugin.tests.api.contrail import rbac_base
 
@@ -43,7 +43,7 @@ class NetworkIpamsTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["list_network_ipams"])
-    @decorators.idempotent_id('9ee2c4d8-3209-4ef8-86e1-0ecea2d4c5f2')
+    @idempotent_id('9ee2c4d8-3209-4ef8-86e1-0ecea2d4c5f2')
     def test_list_network_ipams(self):
         """test method for list n/w ipam objects"""
         with self.rbac_utils.override_role(self):
@@ -51,7 +51,7 @@ class NetworkIpamsTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["create_network_ipams"])
-    @decorators.idempotent_id('ef2415ea-0810-413a-85a0-4508c9d7af91')
+    @idempotent_id('ef2415ea-0810-413a-85a0-4508c9d7af91')
     def test_create_network_ipams(self):
         """test method for create n/w ipam objects"""
         with self.rbac_utils.override_role(self):
@@ -59,7 +59,7 @@ class NetworkIpamsTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["show_network_ipam"])
-    @decorators.idempotent_id('527b19e5-068a-44e3-b175-b504eafeec6e')
+    @idempotent_id('527b19e5-068a-44e3-b175-b504eafeec6e')
     def test_show_network_ipam(self):
         """test method for show n/w ipam objects"""
         new_ipam = self._create_network_ipams()
@@ -68,7 +68,7 @@ class NetworkIpamsTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["delete_network_ipam"])
-    @decorators.idempotent_id('118c1620-efb6-4cc6-8eb5-71bf8631d365')
+    @idempotent_id('118c1620-efb6-4cc6-8eb5-71bf8631d365')
     def test_delete_network_ipam(self):
         """test method for delete n/w ipam objects"""
         new_ipam = self._create_network_ipams()
@@ -77,7 +77,7 @@ class NetworkIpamsTest(rbac_base.BaseContrailTest):
 
     @rbac_rule_validation.action(service="Contrail",
                                  rules=["update_network_ipam"])
-    @decorators.idempotent_id('44cbe2d9-583d-4215-964a-1c321f5e8d92')
+    @idempotent_id('44cbe2d9-583d-4215-964a-1c321f5e8d92')
     def test_update_network_ipam(self):
         """test method for update n/w ipam objects"""
         new_ipam = self._create_network_ipams()
